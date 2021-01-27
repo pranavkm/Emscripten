@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\work\\aot-workload\\s.csproj": {}
+  },
+  "projects": {
+    "D:\\work\\aot-workload\\s.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\work\\aot-workload\\s.csproj",
+        "projectName": "s",
+        "projectPath": "D:\\work\\aot-workload\\s.csproj",
+        "packagesPath": "C:\\Users\\prkrishn\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\aot-workload\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "D:\\work\\aot-workload\\NuGet.Config",
+          "C:\\Users\\prkrishn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet6-transport/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet6/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.NET.Runtime.MonoAOTCompiler.Task": {
+              "target": "Package",
+              "version": "[6.0.0-preview.2.21077.4, )"
+            },
+            "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm": {
+              "target": "Package",
+              "version": "[6.0.0-preview.2.21077.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
