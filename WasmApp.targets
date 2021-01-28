@@ -1,4 +1,8 @@
 <Project>
+  <PropertyGroup>
+    <WasmAppBuilderTasksAssemblyPath>$(MSBuildThisFileDirectory)WasmAppBuilder.dll</WasmAppBuilderTasksAssemblyPath>
+  </PropertyGroup>
+
   <UsingTask TaskName="MonoAOTCompiler" AssemblyFile="$(MonoAOTCompilerTasksAssemblyPath)" />
   <UsingTask TaskName="WasmAppBuilder" AssemblyFile="$(WasmAppBuilderTasksAssemblyPath)" />
   <UsingTask TaskName="WasmAOT" AssemblyFile="$(WasmAppBuilderTasksAssemblyPath)" />
@@ -57,16 +61,31 @@
   -->
 
   <PropertyGroup>
+    <RunAOTCompilation>true</RunAOTCompilation>
     <WasmBuildNative Condition="'$(WasmBuildNative)' == ''">false</WasmBuildNative>
     <WasmBuildNative Condition="'$(RunAOTCompilation)' == 'true'">true</WasmBuildNative>
     <WasmNativeStrip>true</WasmNativeStrip>
     <WasmStripAOTAssemblies Condition="'$(WasmStripAOTAssemblies)' == ''">$(RunAOTCompilation)</WasmStripAOTAssemblies>
+
+    <MonoAotCrossCompilerPath>$(MSBuildThisFileDirectory)\AOT\tools\mono-aot-cross</MonoAotCrossCompilerPath>
+    <MicrosoftNetCoreAppRuntimePackRidDir>/home/prkrishn/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/$(BundledNETCoreAppPackageVersion)/runtimes/browser-wasm</MicrosoftNetCoreAppRuntimePackRidDir>
+    <EMSDK_PATH>$(MSBuildThisFileDirectory)/emsdk/</EMSDK_PATH>
+    <WasmStripAOTAssemblies>false</WasmStripAOTAssemblies>
   </PropertyGroup>
+
+  <Target Name="Foo" DependsOnTargets="GatherWasm;_BeforeWasmBuildApp;_WasmBuildNative" BeforeTargets="_ProcessPublishFilesForBlazor">
+  </Target>
+
+  <Target Name="GatherWasm">
+    <ItemGroup>
+      <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Condition="%(ResolvedFileToPublish.Extension) == '.dll' " />
+    </ItemGroup>
+  </Target>
 
   <!-- Having this separate target allows users to cleanly add After/BeforeTargets for this -->
   <Target Name="WasmBuildApp" AfterTargets="$(WasmBuildAppAfterThisTarget)" />
 
-  <Target Name="_WasmAotCompileApp" Condition="'$(RunAOTCompilation)' == 'true'">
+  <Target Name="_WasmAotCompileApp">
     <Error Condition="'@(_WasmAssemblies)' == ''" Text="Item _WasmAssemblies is empty" />
     <Error Condition="'$(EMSDK_PATH)' == ''" Text="%24(EMSDK_PATH) should be set to emscripten sdk" />
 
@@ -214,7 +233,7 @@
     <ReadLinesFromFile File="$(EmccPublishVersionFile)">
         <Output TaskParameter="Lines" PropertyName="EmccVersion" />
     </ReadLinesFromFile>
-    <Error Condition="'$(RuntimeEmccVersion)' != '$(EmccVersion)'" Text="Emscripten version mismatch, expected '$(RuntimeEmccVersion)', got '$(EmccVersion)'"/>
+    <!-- <Error Condition="'$(RuntimeEmccVersion)' != '$(EmccVersion)'" Text="Emscripten version mismatch, expected '$(RuntimeEmccVersion)', got '$(EmccVersion)'"/> -->
 
    <ItemGroup>
       <_WasmPInvokeModules Include="libSystem.Native" />
