@@ -74,11 +74,26 @@
   </PropertyGroup>
 
   <Target Name="Foo" DependsOnTargets="GatherWasm;_BeforeWasmBuildApp;_WasmBuildNative" BeforeTargets="_ProcessPublishFilesForBlazor">
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.js'" />
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.wasm'" />
+      <ResolvedFileToPublish Remove="$(_BlazorDotNetJSFilePath)" />
+
+      <ResolvedFileToPublish Include="@(WasmNativeAsset)" AssetType="native" RelativePath="dotnet.$(_DotNetJsVersion).js" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.js'"/>
+      <ResolvedFileToPublish Include="@(WasmNativeAsset)" AssetType="native" RelativePath="dotnet.wasm" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.wasm'"/>
+    </ItemGroup>
+
   </Target>
 
   <Target Name="GatherWasm">
     <ItemGroup>
-      <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Condition="%(ResolvedFileToPublish.Extension) == '.dll' " />
+      <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Exclude="@(_Exclude)" 
+        Condition="%(ResolvedFileToPublish.Extension) == '.dll' AND
+        '%(FileName)' != 'Microsoft.JSInterop' 
+         AND %(FileName) != 'Microsoft.JSInterop.WebAssembly' 
+         AND %(FileName) != 'System.Text.Json'
+         AND '%(FileName)' != 'System.Net.Http.Json'
+         AND !$([System.String]::Copy('%(FileName)').StartsWith('Microsoft.Extensions'))" />
     </ItemGroup>
   </Target>
 
@@ -202,6 +217,8 @@
       NativeAssets="@(WasmNativeAsset)"
       DebugLevel="$(WasmDebugLevel)">
       <Output TaskParameter="FileWrites" ItemName="FileWrites" />
+
+      
     </WasmAppBuilder>
 
     <CallTarget Targets="_GenerateRunV8Script" Condition="'$(WasmGenerateRunV8Script)' == 'true'" />
