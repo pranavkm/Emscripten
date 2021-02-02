@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\aot-workload\\s.csproj": {}
+    "/home/prkrishn/emscripten/s.csproj": {}
   },
   "projects": {
-    "D:\\work\\aot-workload\\s.csproj": {
+    "/home/prkrishn/emscripten/s.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\aot-workload\\s.csproj",
+        "projectUniqueName": "/home/prkrishn/emscripten/s.csproj",
         "projectName": "s",
-        "projectPath": "D:\\work\\aot-workload\\s.csproj",
-        "packagesPath": "C:\\Users\\prkrishn\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\aot-workload\\obj\\",
+        "projectPath": "/home/prkrishn/emscripten/s.csproj",
+        "packagesPath": "/home/prkrishn/.nuget/packages/",
+        "outputPath": "/home/prkrishn/emscripten/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "D:\\work\\aot-workload\\NuGet.Config",
-          "C:\\Users\\prkrishn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/prkrishn/emscripten/NuGet.config",
+          "/home/prkrishn/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -47,11 +43,11 @@
           "dependencies": {
             "Microsoft.NET.Runtime.MonoAOTCompiler.Task": {
               "target": "Package",
-              "version": "[6.0.0-preview.2.21077.4, )"
+              "version": "[6.0.0-*, )"
             },
             "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm": {
               "target": "Package",
-              "version": "[6.0.0-preview.2.21077.4, )"
+              "version": "[6.0.0-*, )"
             }
           },
           "imports": [
@@ -69,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/prkrishn/.dotnet/sdk/6.0.100-preview.1.21081.3/RuntimeIdentifierGraph.json"
         }
       }
     }

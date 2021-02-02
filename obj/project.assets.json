@@ -2,22 +2,22 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Microsoft.NET.Runtime.MonoAOTCompiler.Task/6.0.0-preview.2.21077.4": {
+      "Microsoft.NET.Runtime.MonoAOTCompiler.Task/6.0.0-preview.2.21102.8": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Runtime.MonoAOTCompiler.Task.props": {}
         }
       },
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm/6.0.0-preview.2.21077.4": {
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm/6.0.0-preview.2.21102.8": {
         "type": "package"
       }
     }
   },
   "libraries": {
-    "Microsoft.NET.Runtime.MonoAOTCompiler.Task/6.0.0-preview.2.21077.4": {
-      "sha512": "VrRnHX9YnY2+jAGEfKSow1+rEBFVz8wm0u6ShjM1xQ10k1nipn2KjkqmPyI28C4E6TDf8C8FQTIgshHkeKBpKw==",
+    "Microsoft.NET.Runtime.MonoAOTCompiler.Task/6.0.0-preview.2.21102.8": {
+      "sha512": "dQsZAI+rlyeKD+DQloAx6lGdX1RMvehk5kbOZqNKuiRkgQzWuAyqDrp+sKasIcjyBVYnjAPZja91ygZuWGoLog==",
       "type": "package",
-      "path": "microsoft.net.runtime.monoaotcompiler.task/6.0.0-preview.2.21077.4",
+      "path": "microsoft.net.runtime.monoaotcompiler.task/6.0.0-preview.2.21102.8",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -25,15 +25,15 @@
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/Microsoft.NET.Runtime.MonoAOTCompiler.Task.props",
-        "microsoft.net.runtime.monoaotcompiler.task.6.0.0-preview.2.21077.4.nupkg.sha512",
+        "microsoft.net.runtime.monoaotcompiler.task.6.0.0-preview.2.21102.8.nupkg.sha512",
         "microsoft.net.runtime.monoaotcompiler.task.nuspec",
         "tools/net5.0/MonoAOTCompiler.dll"
       ]
     },
-    "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm/6.0.0-preview.2.21077.4": {
-      "sha512": "zQBmeU/5U5d1AgLh+J5W7Snw4lyE1KsIFa2Aq0QqM3QKSvuurFCqsu6g6AScWZayy633UudNjymHj+TgWSskcw==",
+    "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm/6.0.0-preview.2.21102.8": {
+      "sha512": "Byqkl4u2jHFNfrCB59WP21ivsNErEo4jptFpxub9jPNC8rKKdlAe4m7qFrZBCsSPGP8G4Ek6MkG7dgmuwWw1Ug==",
       "type": "package",
-      "path": "microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm/6.0.0-preview.2.21077.4",
+      "path": "microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm/6.0.0-preview.2.21102.8",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -42,7 +42,7 @@
         "Microsoft.NETCore.App.MonoCrossAOT.versions.txt",
         "THIRD-PARTY-NOTICES.TXT",
         "data/RuntimeList.xml",
-        "microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm.6.0.0-preview.2.21077.4.nupkg.sha512",
+        "microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm.6.0.0-preview.2.21102.8.nupkg.sha512",
         "microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm.nuspec",
         "tools/llc",
         "tools/mono-aot-cross",
@@ -54,30 +54,25 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Microsoft.NET.Runtime.MonoAOTCompiler.Task >= 6.0.0-preview.2.21077.4",
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm >= 6.0.0-preview.2.21077.4"
+      "Microsoft.NET.Runtime.MonoAOTCompiler.Task >= 6.0.0-*",
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm >= 6.0.0-*"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\prkrishn\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/prkrishn/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\aot-workload\\s.csproj",
+      "projectUniqueName": "/home/prkrishn/emscripten/s.csproj",
       "projectName": "s",
-      "projectPath": "D:\\work\\aot-workload\\s.csproj",
-      "packagesPath": "C:\\Users\\prkrishn\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\aot-workload\\obj\\",
+      "projectPath": "/home/prkrishn/emscripten/s.csproj",
+      "packagesPath": "/home/prkrishn/.nuget/packages/",
+      "outputPath": "/home/prkrishn/emscripten/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "D:\\work\\aot-workload\\NuGet.Config",
-        "C:\\Users\\prkrishn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/prkrishn/emscripten/NuGet.config",
+        "/home/prkrishn/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -105,11 +100,11 @@
         "dependencies": {
           "Microsoft.NET.Runtime.MonoAOTCompiler.Task": {
             "target": "Package",
-            "version": "[6.0.0-preview.2.21077.4, )"
+            "version": "[6.0.0-*, )"
           },
           "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm": {
             "target": "Package",
-            "version": "[6.0.0-preview.2.21077.4, )"
+            "version": "[6.0.0-*, )"
           }
         },
         "imports": [
@@ -127,7 +122,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/prkrishn/.dotnet/sdk/6.0.100-preview.1.21081.3/RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -135,7 +130,7 @@
     {
       "code": "NU1213",
       "level": "Error",
-      "message": "The package Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm 6.0.0-preview.2.21077.4 has a package type DotnetPlatform that is incompatible with this project. ",
+      "message": "The package Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm 6.0.0-preview.2.21102.8 has a package type DotnetPlatform that is incompatible with this project. ",
       "libraryId": "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
       "targetGraphs": [
         "net5.0"

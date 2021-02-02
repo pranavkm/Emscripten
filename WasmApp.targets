@@ -1,9 +1,12 @@
 <Project>
   <PropertyGroup>
     <WasmAppBuilderTasksAssemblyPath>$(MSBuildThisFileDirectory)WasmAppBuilder.dll</WasmAppBuilderTasksAssemblyPath>
+    <RuntimeFrameworkVersion>$(BundledNETCoreAppPackageVersion)</RuntimeFrameworkVersion>
+    <!-- Or use a more recent version -->
+    <RuntimeFrameworkVersion>6.0.0-preview.2.21102.8</RuntimeFrameworkVersion>
   </PropertyGroup>
 
-  <UsingTask TaskName="MonoAOTCompiler" AssemblyFile="$(MonoAOTCompilerTasksAssemblyPath)" />
+  <UsingTask TaskName="MonoAOTCompiler" AssemblyFile="$(NuGetPackageRoot)microsoft.net.runtime.monoaotcompiler.task\$(RuntimeFrameworkVersion)\tools\net5.0\MonoAOTCompiler.dll" />
   <UsingTask TaskName="WasmAppBuilder" AssemblyFile="$(WasmAppBuilderTasksAssemblyPath)" />
   <UsingTask TaskName="WasmAOT" AssemblyFile="$(WasmAppBuilderTasksAssemblyPath)" />
   <UsingTask TaskName="WasmLoadAssembliesAndReferences" AssemblyFile="$(WasmAppBuilderTasksAssemblyPath)" />
@@ -60,20 +63,23 @@
                                     <WasmExtraConfig Include="string_with_json" Value="&quot;{ &quot;abc&quot;: 4 }&quot;" />
   -->
 
+
   <PropertyGroup>
+    <AOTMode>AOTInterp</AOTMode>
+
     <RunAOTCompilation>true</RunAOTCompilation>
     <WasmBuildNative Condition="'$(WasmBuildNative)' == ''">false</WasmBuildNative>
     <WasmBuildNative Condition="'$(RunAOTCompilation)' == 'true'">true</WasmBuildNative>
     <WasmNativeStrip>true</WasmNativeStrip>
     <WasmStripAOTAssemblies Condition="'$(WasmStripAOTAssemblies)' == ''">$(RunAOTCompilation)</WasmStripAOTAssemblies>
 
-    <MonoAotCrossCompilerPath>$(MSBuildThisFileDirectory)\AOT\tools\mono-aot-cross</MonoAotCrossCompilerPath>
-    <MicrosoftNetCoreAppRuntimePackRidDir>/home/prkrishn/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/$(BundledNETCoreAppPackageVersion)/runtimes/browser-wasm</MicrosoftNetCoreAppRuntimePackRidDir>
-    <EMSDK_PATH>$(MSBuildThisFileDirectory)/emsdk/</EMSDK_PATH>
+    <MonoAotCrossCompilerPath>$(NuGetPackageRoot)microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm\$(RuntimeFrameworkVersion)\tools\mono-aot-cross</MonoAotCrossCompilerPath>
+    <MicrosoftNetCoreAppRuntimePackRidDir>$(NuGetPackageRoot)microsoft.netcore.app.runtime.browser-wasm\$(RuntimeFrameworkVersion)\runtimes\browser-wasm\</MicrosoftNetCoreAppRuntimePackRidDir>
+    <EMSDK_PATH>$(MSBuildThisFileDirectory)emsdk/</EMSDK_PATH>
     <WasmStripAOTAssemblies>false</WasmStripAOTAssemblies>
   </PropertyGroup>
 
-  <Target Name="Foo" DependsOnTargets="GatherWasm;_BeforeWasmBuildApp;_WasmBuildNative" BeforeTargets="_ProcessPublishFilesForBlazor">
+  <Target Name="BlazorWasm" DependsOnTargets="GatherWasm;_BeforeWasmBuildApp;_WasmBuildNative" BeforeTargets="_ProcessPublishFilesForBlazor">
     <ItemGroup>
       <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.js'" />
       <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="%(FileName) == 'dotnet' AND %(Extension) == '.wasm'" />
@@ -87,10 +93,10 @@
 
   <Target Name="GatherWasm">
     <ItemGroup>
-      <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Exclude="@(_Exclude)" 
+      <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Exclude="@(_Exclude)"
         Condition="%(ResolvedFileToPublish.Extension) == '.dll' AND
-        '%(FileName)' != 'Microsoft.JSInterop' 
-         AND %(FileName) != 'Microsoft.JSInterop.WebAssembly' 
+        '%(FileName)' != 'Microsoft.JSInterop'
+         AND %(FileName) != 'Microsoft.JSInterop.WebAssembly'
          AND %(FileName) != 'System.Text.Json'
          AND '%(FileName)' != 'System.Net.Http.Json'
          AND !$([System.String]::Copy('%(FileName)').StartsWith('Microsoft.Extensions'))" />
@@ -218,7 +224,7 @@
       DebugLevel="$(WasmDebugLevel)">
       <Output TaskParameter="FileWrites" ItemName="FileWrites" />
 
-      
+
     </WasmAppBuilder>
 
     <CallTarget Targets="_GenerateRunV8Script" Condition="'$(WasmGenerateRunV8Script)' == 'true'" />

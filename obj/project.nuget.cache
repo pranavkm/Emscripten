@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "KBW3Ngr1wNNCgGh0J4kI7QaRZMQwNaWNyTrVK2nc2zCQSWhle1S/BKgKkwzcv6DGuBh7+kKob0r6W/T2A1Umcw==",
+  "dgSpecHash": "rNsYYrxtWkRp6Fge1x5/IxR5TwurM++nrZIWkpYgrNvFgPQDmCTXS1ry3f0+s/vXlPCgnS4DPdrCaRX6vS/8ow==",
   "success": false,
-  "projectFilePath": "D:\\work\\aot-workload\\s.csproj",
+  "projectFilePath": "/home/prkrishn/emscripten/s.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\prkrishn\\.nuget\\packages\\microsoft.net.runtime.monoaotcompiler.task\\6.0.0-preview.2.21077.4\\microsoft.net.runtime.monoaotcompiler.task.6.0.0-preview.2.21077.4.nupkg.sha512",
-    "C:\\Users\\prkrishn\\.nuget\\packages\\microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm\\6.0.0-preview.2.21077.4\\microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm.6.0.0-preview.2.21077.4.nupkg.sha512"
+    "/home/prkrishn/.nuget/packages/microsoft.net.runtime.monoaotcompiler.task/6.0.0-preview.2.21102.8/microsoft.net.runtime.monoaotcompiler.task.6.0.0-preview.2.21102.8.nupkg.sha512",
+    "/home/prkrishn/.nuget/packages/microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm/6.0.0-preview.2.21102.8/microsoft.netcore.app.runtime.aot.linux-x64.cross.browser-wasm.6.0.0-preview.2.21102.8.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1213",
       "level": "Error",
-      "message": "The package Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm 6.0.0-preview.2.21077.4 has a package type DotnetPlatform that is incompatible with this project. ",
+      "message": "The package Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm 6.0.0-preview.2.21102.8 has a package type DotnetPlatform that is incompatible with this project. ",
       "libraryId": "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
       "targetGraphs": [
         "net5.0"

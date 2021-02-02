@@ -9,8 +9,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.2.21077.12" PrivateAssets="all" />
   </ItemGroup>
 
-  <Import Project="..\Compiler\build\Microsoft.NET.Runtime.MonoAOTCompiler.Task.props" />
   <Import Project="..\WasmApp.targets" />
-
 
 </Project>
