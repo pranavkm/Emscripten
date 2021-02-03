@@ -98,12 +98,7 @@
   <Target Name="GatherWasm">
     <ItemGroup>
       <WasmAssembliesToBundle Include="%(ResolvedFileToPublish.FullPath)" Exclude="@(_Exclude)"
-        Condition="%(ResolvedFileToPublish.Extension) == '.dll' AND
-        '%(FileName)' != 'Microsoft.JSInterop'
-         AND %(FileName) != 'Microsoft.JSInterop.WebAssembly'
-         AND %(FileName) != 'System.Text.Json'
-         AND '%(FileName)' != 'System.Net.Http.Json'
-         AND !$([System.String]::Copy('%(FileName)').StartsWith('Microsoft.Extensions'))" />
+        Condition="%(Extension) == '.dll' AND %(FileName) != 'Microsoft.JSInterop.WebAssembly'" />
     </ItemGroup>
   </Target>
 
